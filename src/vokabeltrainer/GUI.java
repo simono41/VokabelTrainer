@@ -329,7 +329,7 @@ public class GUI extends javax.swing.JFrame {
             a.read();
         }
         catch (FileNotFoundException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Datei wird neu Angelegt!");
         }
         catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
