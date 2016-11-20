@@ -270,6 +270,8 @@ public class GUI extends javax.swing.JFrame {
         this.aktualisieren();
         vokabeln0.add(this.jTextField1.getText());
         vokabeln0.add(this.jTextField2.getText());
+        this.jTextField1.setText("");
+        this.jTextField2.setText("");
         write a = new write();
         try {
             a.write();
