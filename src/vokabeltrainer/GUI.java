@@ -65,6 +65,7 @@ public class GUI extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vokabeltrainer");
 
         jTextField1.setText("Vokabel");
 
