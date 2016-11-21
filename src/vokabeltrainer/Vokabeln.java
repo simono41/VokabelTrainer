@@ -69,13 +69,16 @@ public class Vokabeln extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DefaultListModel<String> dim = new DefaultListModel<>();
-        for (int i = 0; i < GUI.vokabeln0.size(); ++i) {
-            dim.addElement(GUI.vokabeln0.get(i) + " = " + GUI.vokabeln0.get(i++));
-        }
-        this.jList1.setModel(dim);
+        this.aktualisieren();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void aktualisieren() {
+        DefaultListModel<String> dim = new DefaultListModel<>();
+        for (int i = 0; i < GUI.vokabeln0.size();) {
+            dim.addElement(GUI.vokabeln0.get(i++) + " = " + GUI.vokabeln0.get(i++));
+        }
+        this.jList1.setModel(dim);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JList<String> jList1;

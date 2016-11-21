@@ -266,16 +266,6 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void vokabeln() {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
         new Vokabeln().setVisible(true);
     }
     private void vokabel() {
@@ -336,7 +326,7 @@ public class GUI extends javax.swing.JFrame {
         this.jLabel10.setText("" + zufallszahl + "." + gerade);
     }
 
-    private void aktualisieren() {
+    public void aktualisieren() {
         vokabeln0.clear();
         read a = new read();
         try {

@@ -24,5 +24,7 @@ public class main {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         new GUI().setVisible(true);
+        GUI a = new GUI();
+        a.aktualisieren();
     }
 }
