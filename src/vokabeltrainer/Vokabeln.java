@@ -6,13 +6,24 @@
 
 package vokabeltrainer;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import readandwrite.readandremove;
+import readandwrite.remove;
+import readandwrite.write;
 
 /**
  *
  * @author simono41
  */
 public class Vokabeln extends javax.swing.JFrame {
+
+    private int position;
+    public static ArrayList<String> vokabeln0 = new ArrayList();
 
     /** Creates new form Vokabeln */
     public Vokabeln() {
@@ -31,6 +42,7 @@ public class Vokabeln extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -43,6 +55,13 @@ public class Vokabeln extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Remove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -50,8 +69,11 @@ public class Vokabeln extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -60,7 +82,9 @@ public class Vokabeln extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -72,6 +96,54 @@ public class Vokabeln extends javax.swing.JFrame {
         this.aktualisieren();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:  
+        this.entfernen();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void entfernen() {
+        position = jList1.getSelectedIndex();
+        
+        System.out.println("Ausgewählt = " + jList1.getSelectedValue());
+        System.out.println("Ausgewählt = " + position);
+        
+        System.out.println(GUI.vokabeln0.get(position * 2));
+        
+        readandremove d = new readandremove();
+        
+        vokabeln0.clear();
+        try {
+            d.read();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Datei wird neu Angelegt!");
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        vokabeln0.add(GUI.vokabeln0.get(position * 2));
+        vokabeln0.add(GUI.vokabeln0.get(position * 2 + 1));
+        
+        remove c = new remove();
+        try {
+            c.write();
+        } catch (IOException ex) {
+            Logger.getLogger(Vokabeln.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        GUI.vokabeln0.remove(position * 2);
+        GUI.vokabeln0.remove(position * 2);
+        
+
+        this.aktualisieren();
+        write b = new write();
+        try {
+            b.write();
+        } catch (IOException ex) {
+            Logger.getLogger(Vokabeln.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        GUI a = new GUI();
+        a.aktualisieren();
+    }
     public void aktualisieren() {
         DefaultListModel<String> dim = new DefaultListModel<>();
         for (int i = 0; i < GUI.vokabeln0.size();) {
@@ -81,6 +153,7 @@ public class Vokabeln extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

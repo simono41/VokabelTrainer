@@ -5,23 +5,26 @@
  */
 package readandwrite;
 
+/**
+ *
+ * @author simono41
+ */
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import vokabeltrainer.GUI;
+import vokabeltrainer.Vokabeln;
 
-public class read {
+public class readandremove {
     public void read() throws FileNotFoundException, IOException {
         String zeile;
-        FileReader fr = new FileReader("./Vokabeln.txt");
+        FileReader fr = new FileReader("./Vokabeln.old.txt");
         try (BufferedReader br = new BufferedReader(fr)) {
             br.readLine();
             while ((zeile = br.readLine()) != null) {
-                GUI.vokabeln0.add(zeile);
+                Vokabeln.vokabeln0.add(zeile);
             }
             br.close();
         }
     }
 }
-

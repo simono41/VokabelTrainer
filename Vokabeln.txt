@@ -11,3 +11,31 @@ decision
 Entscheidung
 chef
 Koch
+childcare assistant
+Kinderpfleger
+mechanic
+Mechaniker
+garage
+Autowerkstatt
+customer adviser
+Kundenbetreuer
+advise
+beraten
+advice
+Rat
+make-up artist
+Maskenbildner
+fitness instructor
+lange arbeiten
+serve
+bedienen
+repair
+reparieren
+sporty
+sportlich
+artistic
+kuenstlerisch
+organized
+organisiert
+calm
+ruhig
