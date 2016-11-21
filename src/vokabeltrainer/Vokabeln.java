@@ -20,7 +20,7 @@ import readandwrite.write;
  *
  * @author simono41
  */
-public class Vokabeln extends javax.swing.JFrame {
+public final class Vokabeln extends javax.swing.JFrame {
 
     private int position;
     public static ArrayList<String> vokabeln0 = new ArrayList();
@@ -28,6 +28,7 @@ public class Vokabeln extends javax.swing.JFrame {
     /** Creates new form Vokabeln */
     public Vokabeln() {
         initComponents();
+        this.aktualisieren();
     }
 
     /** This method is called from within the constructor to
