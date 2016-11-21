@@ -21,29 +21,12 @@ import readandwrite.write;
  * @author simono41
  */
 public class GUI extends javax.swing.JFrame {
-    
+
     public static ArrayList<String> vokabeln0 = new ArrayList();
     public static String vokabel1;
     public static String vokabel2;
     public static int richtig;
     public static int falsch;
-    private JTextField jTextField1;
-    private JTextField jTextField2;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
-    private JButton jButton1;
-    private JButton jButton2;
-    private JLabel jLabel3;
-    private JLabel jLabel4;
-    private JLabel jLabel5;
-    private JLabel jLabel6;
-    private JLabel jLabel7;
-    private JLabel jLabel8;
-    private JButton jButton3;
-    private JButton jButton4;
-    private JLabel jLabel9;
-    private JLabel jLabel10;
-    private JButton jButton5;
 
     /**
      * Creates new form GUI
@@ -116,7 +99,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel6.setText("0");
 
-        jLabel7.setText("Eingabe = ");
+        jLabel7.setText("Loesung = ");
 
         jLabel8.setText("n");
 
@@ -268,6 +251,7 @@ public class GUI extends javax.swing.JFrame {
     private void vokabeln() {
         new Vokabeln().setVisible(true);
     }
+
     private void vokabel() {
         this.aktualisieren();
         vokabeln0.add(this.jTextField1.getText());
@@ -277,8 +261,7 @@ public class GUI extends javax.swing.JFrame {
         write a = new write();
         try {
             a.write();
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -287,19 +270,18 @@ public class GUI extends javax.swing.JFrame {
         if (this.jTextField2.getText().equals(vokabel1)) {
             System.out.println("Richtig");
             ++richtig;
-            this.jLabel8.setText("Richtig");
         } else {
             System.out.println("Falsch");
             ++falsch;
-            this.jLabel8.setText("Falsch");
         }
+        this.jLabel8.setText(vokabel1);
         this.zufall();
         this.jTextField2.setText("");
     }
 
     private void zufall() {
         int gerade;
-        int zufallszahl = (int)(Math.random() * (double)vokabeln0.size());
+        int zufallszahl = (int) (Math.random() * (double) vokabeln0.size());
         System.out.println(zufallszahl);
         System.out.println(vokabeln0.size());
         if (zufallszahl % 2 == 0) {
@@ -331,17 +313,32 @@ public class GUI extends javax.swing.JFrame {
         read a = new read();
         try {
             a.read();
-        }
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             System.out.println("Datei wird neu Angelegt!");
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.jLabel5.setText(Integer.toString(richtig));
         this.jLabel6.setText(Integer.toString(falsch));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
 }
